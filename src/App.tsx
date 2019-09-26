@@ -60,6 +60,7 @@ class App extends React.Component<{}, State>{
     this.setState(previousState => ({
       tasks:[
         ...previousState.tasks.filter(task => task.id !== taskToDelete.id)]
+        //filter(return) task.id that not equal taskToDelete.id
     }));
   }
 }
