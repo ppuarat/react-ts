@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React from 'react';
 import {Task} from '../models/tasks';
 
 interface Props{
@@ -7,13 +7,18 @@ interface Props{
     task: Task;
 }
 
-export const NewTaskForm: FunctionComponent<Props> = ({
-    onChange,
-    onAdd,
-    task
-}) => (
-    <form onSubmit={onAdd}>
-        <input onChange={onChange} value={task.name} />
-        <button type="submit">Add a task</button>
-    </form>
-)
+export class  NewTaskForm extends React.Component<Props>{
+    constructor(props:Props){
+        super(props);
+    }
+    render(){
+
+        //const {onAdd, onChange, task} = this.props;
+        return(
+            <form onSubmit={this.props.onAdd}>
+                <input onChange={this.props.onChange} value={this.props.task.name} />
+                <button type="submit">Add a task</button>
+            </form>
+        )
+    }
+}
