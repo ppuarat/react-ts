@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import './App.css';
 import { Task } from './models/tasks';
 import { NewTaskForm } from './todo-components/NewTaskForm';
 import { TasksList } from './todo-components/TasksList';
@@ -21,7 +21,7 @@ class App extends React.Component<{}, State>{
 
   render(){
     return (
-      <div>
+      <div className="mainDiv">
         <h1>Hello React!!</h1>
         <NewTaskForm 
           task={this.state.newTask}

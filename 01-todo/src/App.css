@@ -1,0 +1,39 @@
+.mainDiv{
+    margin: 0 auto;
+    width: 80%;
+    padding: 5%;
+}
+.addBTN{
+    font-size: 15px;
+    color: #fff;
+    padding: 10px;
+    background-color: #57a4c2;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 5px #999;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+
+}
+.addBTN:hover {background-color: #45849c}
+
+.addBTN:active {
+  background-color: #45849c;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+.box{
+    display: inline-block;
+    padding: 5px;
+}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  

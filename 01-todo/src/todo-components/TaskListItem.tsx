@@ -10,7 +10,6 @@ export const TaskListItem:FunctionComponent<Props> = ({task, onDelete})=>{
 
     //TypeScript class has a ploblem when calling this(undefined) in onClick method
     const onClick = () => {
-        console.log("OnClick : ");
         onDelete(task);
     }
 

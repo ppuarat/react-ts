@@ -16,8 +16,14 @@ export class  NewTaskForm extends React.Component<Props>{
         //const {onAdd, onChange, task} = this.props;
         return(
             <form onSubmit={this.props.onAdd}>
-                <input onChange={this.props.onChange} value={this.props.task.name} />
-                <button type="submit">Add a task</button>
+                <div className="box">
+                    <input type="text" onChange={this.props.onChange} value={this.props.task.name} />
+
+                </div>
+                <div className="box">
+                    <button className="addBTN" type="submit">Add a task</button>
+
+                </div>
             </form>
         )
     }
