@@ -1,43 +1,22 @@
 import React from 'react';
 import Square from './Square';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 
-
+interface Props {
+    squares: Array<string>,
+    onClick: (i:number)=> void
+}
 
 interface State {
     squares: Array<string>,
     xIsNext: boolean
 }
 
-export class Board extends React.Component<{}, State>{
+export class Board extends React.Component<Props, State>{
 
     state = {
         squares: Array(9).fill(""),
         xIsNext: true
-    }
-
-    handleClick(i: number) {
-        const squares = this.state.squares.slice();
-        //Check if the game is still going or check if this box had been clicked
-        if (calculateWinner(squares) || squares[i]) {
-            return;
-        }
-
-        squares[i] = this.state.xIsNext ? 'X' : 'O';
-
-        this.setState({
-            squares: squares,
-            xIsNext: !this.state.xIsNext
-        });
-    }
-    //Reset
-    playAgain() {
-        this.setState({
-            squares: Array(9).fill(""),
-            xIsNext: true
-        })
     }
 
     renderSquare(i: number) {
@@ -49,68 +28,33 @@ export class Board extends React.Component<{}, State>{
             className="paddingTB0">
                 <Square
                     key={i}
-                    value={this.state.squares[i]}
-                    onClick={() => this.handleClick(i)} />
+                    value={this.props.squares[i]}
+                    onClick={() => this.props.onClick(i)} />
                 {this.renderSquare(i + 1)}
                 {this.renderSquare(i + 2)}
             </Grid>
         } else if (i <= 8) {
             return <Square
                 key={i}
-                value={this.state.squares[i]}
-                onClick={() => this.handleClick(i)} />
+                value={this.props.squares[i]}
+                onClick={() => this.props.onClick(i)} />
         }
     }
 
     render() {
-        const winner = calculateWinner(this.state.squares)
-        let status: string;
-        if (winner) {
-            status = "Winner: " + winner;
-        } else {
-            status = "Next Plater: " + (this.state.xIsNext ? "X" : "O");
-        }
+        
         return (
-            <Grid container spacing={3}>
-                <Grid item xs={12}>{status}</Grid>
+            <div >
+                <Grid item xs={12}></Grid>
                 {/* render game table */}
-                <Paper>
-
                 {[0, 3, 6].map(val => this.renderSquare(val))}
-                </Paper>
                 {/* reset button  */}
-                <Grid item xs={12}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => this.playAgain()}
-                    >Play Again</Button>
-                </Grid>
+                
 
-            </Grid>
+            </div>
         );
     }
 
-}
-
-function calculateWinner(squares: Array<string>) {
-    const lines = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
-    ];
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
-        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
-        }
-    }
-    return null;
 }
 
 export default Board;
