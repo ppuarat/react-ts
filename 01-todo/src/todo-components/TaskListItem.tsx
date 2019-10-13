@@ -6,7 +6,7 @@ interface Props{
     onDelete: (task:Task)=>void
 }
 //TypeScript Class is now working with this code
-export const TaskListItem:FunctionComponent<Props> = ({task, onDelete})=>{
+export const TaskListItem:FunctionComponent<Props> = ({task, onDelete} : Props)=>{
 
     //TypeScript class has a ploblem when calling this(undefined) in onClick method
     const onClick = () => {
